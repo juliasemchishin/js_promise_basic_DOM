@@ -19,19 +19,36 @@ const promise2 = new Promise((resolve, reject) => {
   }, 3000);
 });
 
-promise1.then((successData) => {
-  const div = document.createElement('div');
+promise1
+  .then((successData) => {
+    const div = document.createElement('div');
 
-  div.classList.add('message');
-  div.textContent = successData;
-  body.appendChild(div);
-});
+    div.classList.add('message');
+    div.textContent = successData;
+    body.appendChild(div);
+  })
+  .catch((errorData) => {
+    const div = document.createElement('div');
 
-promise2.catch((errorData) => {
-  const div = document.createElement('div');
+    div.classList.add('message');
+    div.classList.add('error-message');
+    div.textContent = errorData;
+    body.appendChild(div);
+  });
 
-  div.classList.add('message');
-  div.classList.add('error-message');
-  div.textContent = errorData;
-  body.appendChild(div);
-});
+promise2
+  .then((successData) => {
+    const div = document.createElement('div');
+
+    div.classList.add('message');
+    div.textContent = successData;
+    body.appendChild(div);
+  })
+  .catch((errorData) => {
+    const div = document.createElement('div');
+
+    div.classList.add('message');
+    div.classList.add('error-message');
+    div.textContent = errorData;
+    body.appendChild(div);
+  });
